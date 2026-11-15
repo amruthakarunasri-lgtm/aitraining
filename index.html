@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>People Connect — Practical AI Training for Teams</title>
+<title>People Connect — AI Agents Training for Industry | 10X Productivity</title>
 <style>
 :root{
   --bg:#0a0118;
@@ -48,7 +48,9 @@ nav{position:sticky;top:0;z-index:20;display:flex;justify-content:space-between;
 .section h2{font-size:clamp(28px,4vw,44px);text-align:center;margin-bottom:10px;font-weight:900}
 .sub{text-align:center;color:var(--muted);max-width:750px;margin:0 auto 32px;font-size:17px}
 /* DEPARTMENTS */
-
+.tabs{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:24px}
+.tab{padding:10px 18px;border-radius:30px;border:1.5px solid rgba(255,255,255,.25);background:rgba(255,255,255,.06);cursor:pointer;font-weight:700;color:#fff}
+.tab.active{background:linear-gradient(90deg,var(--cyan),var(--lime));color:#000;border-color:transparent}
 .dept-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:18px}
 .dept-card{background:linear-gradient(180deg,rgba(255,255,255,.12),rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.15);border-radius:20px;padding:24px;position:relative;overflow:hidden;transition:.25s}
 .dept-card:hover{transform:translateY(-6px);border-color:var(--cyan)}
@@ -61,25 +63,31 @@ nav{position:sticky;top:0;z-index:20;display:flex;justify-content:space-between;
 .kpi{display:inline-block;background:rgba(163,255,0,.18);border:1px solid var(--lime);color:var(--lime);font-size:13px;font-weight:800;padding:4px 12px;border-radius:20px;margin:4px 6px 0 0}
 .agent-box{background:rgba(0,0,0,.35);border-radius:12px;padding:12px;font-size:13.8px;margin-top:10px;border-left:4px solid var(--cyan)}
 /* PROGRAM */
-.program-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
-.prog{background:#fff;color:#160431;border-radius:22px;padding:28px;position:relative}
-.prog.popular{background:linear-gradient(135deg,#ffcf02,#ff7a18,#ff2fb3);color:#1a0010;transform:scale(1.03);box-shadow:0 20px 60px rgba(255,47,179,.4)}
-.prog h3{font-size:22px;margin-bottom:6px} .prog ul{margin:14px 0 18px 18px;font-size:15px}
 
+/* ROI */
+.roi{background:linear-gradient(135deg,#1e1b4b,#7c3aed,#ff2fb3);border-radius:24px;padding:32px;display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.roi input[type=range]{width:100%;accent-color:var(--yellow);margin:10px 0}
+.roi-result{background:rgba(0,0,0,.35);border-radius:18px;padding:24px;text-align:center}
+.roi-result b{font-size:44px;color:var(--yellow)}
 /* PROCESS */
 .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:10px}
 .step{background:var(--card);border:1px solid rgba(255,255,255,.15);border-radius:18px;padding:22px;text-align:center}
 .step .num{font-size:36px;font-weight:900}
-/* FAQ */
+/* TESTIMONIALS */
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.testi{background:rgba(255,255,255,.08);border-radius:18px;padding:22px;border:1px solid rgba(255,255,255,.14)}
+.testi p{font-style:italic;color:#f5f3ff} .testi b{color:var(--yellow)}
+/* FAQ + FORM */
 .faq details{background:rgba(255,255,255,.07);border-radius:12px;padding:14px 18px;margin-bottom:10px;cursor:pointer}
 .faq summary{font-weight:800}
  .contact{background:#fff;color:#1a0010;border-radius:24px;padding:32px;margin:20px auto 0;max-width:720px;text-align:center}
  .contact .wa-link{display:inline-block;margin-top:12px;background:#128c45;color:#fff;font-size:18px;font-weight:800;padding:15px 24px;border-radius:50px}
  .contact .wa-link:hover{background:#0e7439;transform:translateY(-2px)}
+
 footer{text-align:center;padding:28px;color:#a78bfa;font-size:14px}
 .float-wa{position:fixed;bottom:20px;right:20px;background:#25D366;color:#fff;width:58px;height:58px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;box-shadow:0 8px 24px rgba(0,0,0,.4);z-index:30}
 @media(max-width:860px){.nav-links{display:none}}
-
+.reveal{opacity:0;transform:translateY(24px);transition:.6s} .reveal.visible{opacity:1;transform:none}
 </style>
 </head>
 <body>
@@ -87,96 +95,141 @@ footer{text-align:center;padding:28px;color:#a78bfa;font-size:14px}
 <nav>
   <div class="logo"><img class="site-logo" src="logo.png" alt="People Connect logo" onerror="this.remove()" /><span class="brand-3d">People Connect</span></div>
   <div class="nav-links">
-    <a href="#departments">Use cases</a><a href="#programs">Training</a><a href="#approach">Approach</a><a href="#contact">Contact</a>
+    <a href="#departments">Departments</a><a href="#roi">ROI</a><a href="#results">Results</a><a href="#contact">Contact</a>
   </div>
-  <a href="https://wa.me/919347620856?text=Hi%20People%20Connect%2C%20I%27d%20like%20to%20discuss%20an%20AI%20training%20demo%20for%20my%20team." target="_blank" rel="noopener noreferrer" class="btn btn-hot" style="padding:10px 20px;font-size:14px;">Book a Demo</a>
+  <a href="https://web.whatsapp.com/send?phone=919347620856&text=Hi%20People%20Connect%2C%20I%27d%20like%20to%20discuss%20an%20AI%20training%20demo%20for%20my%20team." target="_blank" rel="noopener noreferrer" class="btn btn-hot" style="padding:10px 20px;font-size:14px;">Book Demo</a>
 </nav>
 
 <header class="hero">
-  <div class="pill">Practical AI training for business teams</div>
-  <h1>Help your team put <span class="gradient-text">AI to work</span></h1>
-  <p>Give your people practical experience applying AI to everyday workflows—from finance and operations to sales and HR. Start with a short conversation about your team's needs.</p>
+  <div class="pill">🔥 TRUSTED BY 120+ MANUFACTURING • LOGISTICS • BFSI • RETAIL COMPANIES</div>
+  <h1>Turn Your Employees Into <span class="gradient-text">AI-Powered Superteams</span> in 30 Days</h1>
+  <p>Practical <b>AI Agents Training</b> for Production, Supply Chain, Finance, Marketing, Sales, Procurement & HR. Cut costs 30-45%, boost output 3X — without hiring more staff.</p>
   <div class="hero-cta">
-    <a href="https://wa.me/919347620856?text=Hi%20People%20Connect%2C%20I%27d%20like%20to%20discuss%20an%20AI%20training%20demo%20for%20my%20team." target="_blank" rel="noopener noreferrer" class="btn btn-hot">Book a Demo on WhatsApp</a>
-    <a href="#departments" class="btn btn-ghost">Explore Team Use Cases</a>
+    <a href="https://web.whatsapp.com/send?phone=919347620856&text=Hi%20People%20Connect%2C%20I%27d%20like%20to%20discuss%20an%20AI%20training%20demo%20for%20my%20team." target="_blank" rel="noopener noreferrer" class="btn btn-hot">Book Demo on WhatsApp</a>
+    <a href="#roi" class="btn btn-ghost">Explore Team Use Cases</a>
   </div>
   <div class="stats">
-    <div class="stat"><b class="gradient-text">120+</b><small>Companies served</small></div>
+    <div class="stat"><b class="gradient-text">3.4X</b><small>Avg. productivity lift</small></div>
+    <div class="stat"><b style="color:var(--cyan)">42%</b><small>Cost reduction</small></div>
     <div class="stat"><b style="color:var(--lime)">15,000+</b><small>Employees trained</small></div>
     <div class="stat"><b style="color:var(--yellow)">4.9/5</b><small>Client rating</small></div>
   </div>
 </header>
 
-<div class="marquee">PRACTICAL AI TRAINING • PRODUCTION • SUPPLY CHAIN • FINANCE • MARKETING • SALES • PROCUREMENT • HR • ON-SITE AND LIVE ONLINE</div>
+<div class="marquee">✨ AI AGENTS FOR PRODUCTION ✨ SUPPLY CHAIN ✨ FINANCE ✨ MARKETING ✨ SALES ✨ PROCUREMENT ✨ HR ✨ 30-DAY TRANSFORMATION ✨ ON-SITE + LIVE ONLINE ✨</div>
 
 <section class="section" id="departments">
-  <h2>Explore AI use cases for <span class="gradient-text">your organization</span></h2>
-  <p class="sub">See practical examples for common team workflows. Training is tailored to your priorities, tools, and approved data policies.</p>
-  <div class="dept-grid">
-    <article class="dept-card prod"><div style="font-size:34px;">🏭</div><h3>Production & Operations</h3><p style="color:#e9d5ff;font-size:14.5px;">Explore AI support for operational documentation, quality workflows, and maintenance information.</p><ul><li>Shift-log drafting and summaries</li><li>Quality inspection documentation</li><li>Maintenance information lookup</li></ul><span class="kpi">Workflow examples</span><div class="agent-box">Example: Organize a maintenance note or inspection observation for review by the responsible team.</div><div style="margin-top:12px;"><a href="https://wa.me/919347620856?text=Hi%20People%20Connect%2C%20I%27d%20like%20to%20discuss%20AI%20training%20for%20this%20use%20case." target="_blank" rel="noopener noreferrer" class="btn btn-hot" style="padding:9px 18px;font-size:13.5px;">Discuss This Use Case</a></div></article>
-    <article class="dept-card supply"><div style="font-size:34px;">🚚</div><h3>Supply Chain & Logistics</h3><p style="color:#e9d5ff;font-size:14.5px;">Explore ways AI can assist with planning, inventory information, and shipment communications.</p><ul><li>Inventory and demand summaries</li><li>Shipment status communication drafts</li><li>Supplier information review</li></ul><span class="kpi">Workflow examples</span><div class="agent-box">Example: Summarize inventory and lead-time information to support a planner’s review.</div><div style="margin-top:12px;"><a href="https://wa.me/919347620856?text=Hi%20People%20Connect%2C%20I%27d%20like%20to%20discuss%20AI%20training%20for%20this%20use%20case." target="_blank" rel="noopener noreferrer" class="btn btn-hot" style="padding:9px 18px;font-size:13.5px;">Discuss This Use Case</a></div></article>
-    <article class="dept-card fin"><div style="font-size:34px;">💰</div><h3>Finance & Accounts</h3><p style="color:#e9d5ff;font-size:14.5px;">Explore AI assistance for document review, reconciliation support, and reporting workflows.</p><ul><li>Invoice data extraction for review</li><li>Reconciliation support</li><li>Cash-flow and report summaries</li></ul><span class="kpi">Workflow examples</span><div class="agent-box">Example: Extract fields from an invoice for a person to verify before entry into an accounting system.</div><div style="margin-top:12px;"><a href="https://wa.me/919347620856?text=Hi%20People%20Connect%2C%20I%27d%20like%20to%20discuss%20AI%20training%20for%20this%20use%20case." target="_blank" rel="noopener noreferrer" class="btn btn-hot" style="padding:9px 18px;font-size:13.5px;">Discuss This Use Case</a></div></article>
-    <article class="dept-card mkt"><div style="font-size:34px;">📣</div><h3>Marketing</h3><p style="color:#e9d5ff;font-size:14.5px;">Explore AI support for content planning, customer feedback, and campaign workflows.</p><ul><li>Drafts aligned to brand guidance</li><li>Customer feedback summaries</li><li>Campaign content variations</li></ul><span class="kpi">Workflow examples</span><div class="agent-box">Example: Create a first draft of campaign copy for a marketer to review and refine.</div><div style="margin-top:12px;"><a href="https://wa.me/919347620856?text=Hi%20People%20Connect%2C%20I%27d%20like%20to%20discuss%20AI%20training%20for%20this%20use%20case." target="_blank" rel="noopener noreferrer" class="btn btn-hot" style="padding:9px 18px;font-size:13.5px;">Discuss This Use Case</a></div></article>
-    <article class="dept-card sales"><div style="font-size:34px;">🤝</div><h3>Sales</h3><p style="color:#e9d5ff;font-size:14.5px;">Explore AI assistance for customer responses, sales materials, and follow-up workflows.</p><ul><li>Draft responses and quotations</li><li>Lead and meeting summaries</li><li>Follow-up preparation</li></ul><span class="kpi">Workflow examples</span><div class="agent-box">Example: Prepare a draft response using approved product information for a sales representative to check.</div><div style="margin-top:12px;"><a href="https://wa.me/919347620856?text=Hi%20People%20Connect%2C%20I%27d%20like%20to%20discuss%20AI%20training%20for%20this%20use%20case." target="_blank" rel="noopener noreferrer" class="btn btn-hot" style="padding:9px 18px;font-size:13.5px;">Discuss This Use Case</a></div></article>
-    <article class="dept-card proc"><div style="font-size:34px;">🧾</div><h3>Procurement</h3><p style="color:#e9d5ff;font-size:14.5px;">Explore AI support for reviewing supplier documents and preparing procurement workflows.</p><ul><li>Supplier quote comparisons</li><li>Vendor information summaries</li><li>Purchase request drafts</li></ul><span class="kpi">Workflow examples</span><div class="agent-box">Example: Compare fields from supplier documents to help a buyer assess options.</div><div style="margin-top:12px;"><a href="https://wa.me/919347620856?text=Hi%20People%20Connect%2C%20I%27d%20like%20to%20discuss%20AI%20training%20for%20this%20use%20case." target="_blank" rel="noopener noreferrer" class="btn btn-hot" style="padding:9px 18px;font-size:13.5px;">Discuss This Use Case</a></div></article>
-    <article class="dept-card hr"><div style="font-size:34px;">👥</div><h3>Human Resources</h3><p style="color:#e9d5ff;font-size:14.5px;">Explore AI support for employee information, onboarding materials, and HR communications.</p><ul><li>HR policy information assistant</li><li>Onboarding content drafts</li><li>Interview and training coordination</li></ul><span class="kpi">Workflow examples</span><div class="agent-box">Example: Find a relevant answer from approved HR guidance for review before sharing.</div><div style="margin-top:12px;"><a href="https://wa.me/919347620856?text=Hi%20People%20Connect%2C%20I%27d%20like%20to%20discuss%20AI%20training%20for%20this%20use%20case." target="_blank" rel="noopener noreferrer" class="btn btn-hot" style="padding:9px 18px;font-size:13.5px;">Discuss This Use Case</a></div></article>
+  <h2>One Academy. <span class="gradient-text">Every Department Transformed.</span></h2>
+  <p class="sub">We don't teach theory. We deploy working AI agents inside YOUR workflows — your SAP, Tally, Excel, WhatsApp, Email, ERP — in live workshops.</p>
+  <div class="tabs" id="deptTabs">
+    <button class="tab active" data-f="all">All</button>
+    <button class="tab" data-f="prod">🏭 Production</button>
+    <button class="tab" data-f="supply">🚚 Supply Chain</button>
+    <button class="tab" data-f="fin">💰 Finance</button>
+    <button class="tab" data-f="mkt">📣 Marketing</button>
+    <button class="tab" data-f="sales">🤝 Sales</button>
+    <button class="tab" data-f="proc">🧾 Procurement</button>
+    <button class="tab" data-f="hr">👥 HR</button>
+  </div>
+  <div class="dept-grid" id="deptGrid"></div>
+</section>
+
+<section class="section" id="roi">
+  <h2>💸 What Is <span class="gradient-text">Manual Work Costing You?</span></h2>
+  <p class="sub">Adjust the sliders to explore a sample estimate. Actual results depend on your team's workflows and tools.</p>
+  <div class="roi">
+    <div>
+      <label><b>Employees:</b> <span id="empVal">200</span></label>
+      <input type="range" id="emp" min="20" max="2000" value="200" />
+      <label><b>Avg. monthly salary (₹):</b> <span id="salVal">35,000</span></label>
+      <input type="range" id="sal" min="15000" max="150000" step="1000" value="35000" />
+      <label><b>Hours wasted / employee / week:</b> <span id="hrsVal">8 hrs</span></label>
+      <input type="range" id="hrs" min="2" max="20" value="8" />
+      <p style="font-size:14px;color:#ffe28a;">This is an illustrative estimate, not a guarantee of savings or time reclaimed.</p>
+    </div>
+    <div class="roi-result">
+      <small>ILLUSTRATIVE ANNUAL VALUE OF TIME</small><br>
+      <b id="roiOut">₹2.18 Cr</b>
+      <p id="roiSub" style="color:#e9d5ff;">For discussion only; not a guaranteed saving.</p>
+      <br><a href="https://web.whatsapp.com/send?phone=919347620856&amp;text=Hi%20People%20Connect%2C%20I%27d%20like%20to%20discuss%20AI%20training%20for%20my%20team." target="_blank" rel="noopener noreferrer" class="btn btn-hot">Discuss Your Team on WhatsApp</a>
+    </div>
   </div>
 </section>
 
-<section class="section" id="programs">
-  <h2>Training that fits <span class="gradient-text">your team</span></h2>
-  <p class="sub">From a focused introduction to broader team enablement, discuss a training format suited to your needs. On-site and live-online options are available.</p>
-  <div class="program-grid">
-    <div class="prog">
-      <h3>AI Introduction</h3><p>For leaders and managers</p>
-      <ul><li>Understand practical AI capabilities and limitations</li><li>See relevant business workflow examples</li><li>Discuss responsible use and data considerations</li></ul>
-      <a href="https://wa.me/919347620856?text=Hi%20People%20Connect%2C%20I%27d%20like%20to%20discuss%20an%20AI%20training%20demo%20for%20my%20team." target="_blank" rel="noopener noreferrer" class="btn btn-hot" style="width:100%;text-align:center">Discuss a Demo</a>
-    </div>
-    <div class="prog popular">
-      <h3>Role-Based Team Training</h3><p>For teams and departments</p>
-      <ul><li>Explore AI use cases relevant to your work</li><li>Practice with guided, hands-on activities</li><li>Identify appropriate next steps for your team</li></ul>
-      <a href="https://wa.me/919347620856?text=Hi%20People%20Connect%2C%20I%27d%20like%20to%20discuss%20AI%20training%20for%20my%20team." target="_blank" rel="noopener noreferrer" class="btn" style="background:#000;color:#fff;width:100%;text-align:center">Discuss Your Team</a>
-    </div>
-    <div class="prog">
-      <h3>Enterprise Enablement</h3><p>For broader adoption</p>
-      <ul><li>Align training to your workflows and priorities</li><li>Discuss governance and adoption needs</li><li>Plan a suitable learning path with your team</li></ul>
-      <a href="https://wa.me/919347620856?text=Hi%20People%20Connect%2C%20I%27d%20like%20to%20discuss%20enterprise%20AI%20training." target="_blank" rel="noopener noreferrer" class="btn btn-ghost" style="border-color:#160431;color:#160431;width:100%;text-align:center">Talk to Us</a>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="approach">
-  <h2>A clear, practical <span class="gradient-text">way to get started</span></h2>
+<section class="section">
+  <h2>How We <span class="gradient-text">Transform You in 4 Steps</span></h2>
   <div class="steps">
-    <div class="step"><div class="num">1</div><h3>Share your priorities</h3><p style="color:var(--muted)">Tell us about your team, workflows, and what you want to improve.</p></div>
-    <div class="step"><div class="num">2</div><h3>See relevant examples</h3><p style="color:var(--muted)">Explore practical AI use cases connected to your team's work.</p></div>
-    <div class="step"><div class="num">3</div><h3>Discuss a training plan</h3><p style="color:var(--muted)">We'll talk through audience, format, and suitable next steps.</p></div>
+    <div class="step reveal"><div class="num">🔍</div><h3>1. Free AI Audit</h3><p style="color:var(--muted)">We map 20-30 repetitive tasks in your plant & office in 2 days.</p></div>
+    <div class="step reveal"><div class="num">🛠️</div><h3>2. Live Build</h3><p style="color:var(--muted)">Employees build agents on YOUR data — not dummy examples.</p></div>
+    <div class="step reveal"><div class="num">🚀</div><h3>3. Deploy</h3><p style="color:var(--muted)">Agents go live in WhatsApp, Excel, SAP, Email in week 3.</p></div>
+    <div class="step reveal"><div class="num">📈</div><h3>4. Scale</h3><p style="color:var(--muted)">Dashboard tracks hours saved. Champions train others.</p></div>
+  </div>
+</section>
+
+<section class="section" id="results">
+  <h2>Clients <span class="gradient-text">Love the Numbers ❤️</span></h2>
+  <p class="sub">Real outcomes from manufacturing, logistics & services clients.</p>
+  <div class="testi-grid">
+    <div class="testi reveal"><p>"Purchase order processing went from 3 days to 4 hours. Our procurement team now handles 2X vendors with same headcount."</p><br><b>— VP Procurement, Auto Ancillary, Pune</b><br><small>⭐⭐⭐⭐⭐ Saved ₹86L / year</small></div>
+    <div class="testi reveal"><p>"Sales quotations used to take 2 days. Now AI agent sends it in 11 minutes on WhatsApp. Conversion up 27%."</p><br><b>— Director Sales, Building Materials, Kochi</b><br><small>⭐⭐⭐⭐⭐ +27% win rate</small></div>
+    <div class="testi reveal"><p>"HR onboarding, payslip queries, leave — 80% now handled by HR bot. HR team focuses on retention, not paperwork."</p><br><b>— CHRO, Logistics Group, Chennai</b><br><small>⭐⭐⭐⭐⭐ 1200 hrs saved / month</small></div>
   </div>
 </section>
 
 <section class="section faq">
-  <h2>Good to know</h2>
-  <p class="sub">A few common questions before we talk.</p>
-  <details open><summary>Does this require coding?</summary><p style="color:var(--muted)">The training focuses on practical, accessible AI workflows. We can discuss your team's experience and goals before recommending an approach.</p></details>
-  <details><summary>How do you handle company data?</summary><p style="color:var(--muted)">We discuss your data policies and approved tools before any hands-on work. Avoid sharing confidential or personal data in public AI tools.</p></details>
-  <details><summary>Will AI replace our team?</summary><p style="color:var(--muted)">AI is a tool that can assist with selected tasks. Outcomes depend on the workflow, tools, and how your organization chooses to use it.</p></details>
-  <details><summary>What tools do you cover?</summary><p style="color:var(--muted)">Training can cover commonly used AI assistants and workflow tools, based on your team's needs and approved technology.</p></details>
+  <h2>FAQs</h2>
+  <p class="sub">Worried about data safety / job loss / tech skills? Read this.</p>
+  <details open><summary>Is our company data safe?</summary><p style="color:var(--muted)">Yes. We train on private, access-controlled AI — your data never trains public models. Includes DPDP Act compliant setup + on-prem options.</p></details>
+  <details><summary>Our staff is not tech-savvy. Will they cope?</summary><p style="color:var(--muted)">Absolutely. 70% of our trainees had never used ChatGPT. No coding needed — if they use WhatsApp & Excel, they can build agents.</p></details>
+  <details><summary>Will AI replace jobs?</summary><p style="color:var(--muted)">No — it removes boring work. Clients redeploy staff to quality, sales & customer delight. Attrition dropped 18% on average.</p></details>
+  <details><summary>What tools do you cover?</summary><p style="color:var(--muted)">ChatGPT, Copilot, Gemini, Claude, custom GPT agents, Excel AI, SAP/Tally automation, WhatsApp bots, voice agents for shop-floor.</p></details>
 </section>
 
 <section class="section" id="contact">
-  <h2>Let's explore what's useful for <span class="gradient-text">your team</span></h2>
-  <p class="sub">Skip the form. Message us directly on WhatsApp to discuss a demo, your team's needs, and possible next steps.</p>
-  <div class="contact" id="whatsappContact">
+  <h2>Let's talk about <span class="gradient-text">AI training for your team</span></h2>
+  <p class="sub">Skip the form. Message us directly on WhatsApp to discuss your team's needs and a suitable demo.</p>
+  <div class="contact">
     <h3>Start a conversation with People Connect</h3>
     <p>Send a quick message—no form or booking account needed.</p>
-    <a class="wa-link" href="https://wa.me/919347620856?text=Hi%20People%20Connect%2C%20I%27d%20like%20to%20discuss%20an%20AI%20training%20demo%20for%20my%20team." target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a>
+    <a class="wa-link" href="https://web.whatsapp.com/send?phone=919347620856&amp;text=Hi%20People%20Connect%2C%20I%27d%20like%20to%20discuss%20an%20AI%20training%20demo%20for%20my%20team." target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a>
     <p style="margin-top:16px;">Or email <a href="mailto:peopleconnect2004@gmail.com" style="color:#6d28d9;font-weight:700;">peopleconnect2004@gmail.com</a></p>
   </div>
 </section>
 
 <footer>© 2026 People Connect • Kochi • Bengaluru • Dubai • Made to make India AI-first 🇮🇳</footer>
-<a class="float-wa" href="https://wa.me/919347620856?text=Hi%20People%20Connect%2C%20I%27d%20like%20to%20discuss%20an%20AI%20training%20demo%20for%20my%20team." target="_blank" rel="noopener noreferrer" title="Chat with us on WhatsApp">💬</a>
+<a class="float-wa" href="https://web.whatsapp.com/send?phone=919347620856&amp;text=Hi%20People%20Connect%2C%20I%27d%20like%20to%20discuss%20an%20AI%20training%20demo%20for%20my%20team." target="_blank" rel="noopener noreferrer" title="Chat with us on WhatsApp">💬</a>
 
-
+<script>
+const depts=[
+ {k:'prod',c:'prod',icon:'🏭',t:'Production & Operations',d:'Predict breakdowns, auto logbooks, quality checks via photo AI.',pts:['Downtime prediction agent','Digital shift logbook + voice entry','Vision QC: defect detection from mobile photo'],kpi:'-32% downtime',agent:'🤖 Agent: Snap machine noise/photo → auto creates maintenance ticket in SAP + alerts supervisor on WhatsApp.'},
+ {k:'supply',c:'supply',icon:'🚚',t:'Supply Chain & Logistics',d:'Demand forecasting, route & inventory agents that never sleep.',pts:['Stock-out / overstock predictor','Auto LR, e-way bill & tracking updates','Vendor delay risk radar'],kpi:'-28% inventory cost',agent:'🤖 Agent: Daily sales + lead time → auto reorder suggestion mailed to purchase head.'},
+ {k:'fin',c:'fin',icon:'💰',t:'Finance & Accounts',d:'Close books 5X faster. Zero Excel hell.',pts:['Invoice reading + Tally entry agent','GST mismatch finder','Cash-flow forecaster + daily P&L on WhatsApp'],kpi:'5X faster closing',agent:'🤖 Agent: Photo of bill → extracted, validated & posted to Tally with GST check.'},
+ {k:'mkt',c:'mkt',icon:'📣',t:'Marketing',d:'30 days of content in 3 hours. In YOUR brand voice.',pts:['Brand-trained content agent','Competitor + review sentiment tracker','Ad creative & Malayalam/ Hindi copy agent'],kpi:'10X content output',agent:'🤖 Agent: Product photo → 10 reels scripts + posters + captions in 2 mins.'},
+ {k:'sales',c:'sales',icon:'🤝',t:'Sales',d:'Never miss a follow-up. Quote in minutes.',pts:['WhatsApp quote + catalogue agent','Lead scoring + auto follow-up','Meeting notes → CRM updater'],kpi:'+27% conversion',agent:'🤖 Agent: Customer says “2BHK doors quote” → priced PDF quote on WhatsApp in 11 min.'},
+ {k:'proc',c:'proc',icon:'🧾',t:'Procurement',d:'Compare 50 quotes in seconds. Kill overpricing.',pts:['Quote comparison matrix agent','Vendor verification + past performance','PO drafting + approval workflow'],kpi:'-14% purchase cost',agent:'🤖 Agent: Upload 5 PDFs → side-by-side price/ spec table + cheapest compliant pick.'},
+ {k:'hr',c:'hr',icon:'👥',t:'Human Resource',d:'Onboard in 1 day, resolve queries 24x7.',pts:['HR policy bot on WhatsApp','Resume screening + interview scheduler','Attrition risk + training recommender'],kpi:'-70% HR queries',agent:'🤖 Agent: “How many leaves left?” → instant reply + leave application link, no HR call.'}
+];
+const grid=document.getElementById('deptGrid');
+function renderDepts(f='all'){
+ grid.innerHTML='';
+ depts.filter(d=>f==='all'||d.k===f).forEach(d=>{
+  const div=document.createElement('div');
+  div.className='dept-card '+d.c+' reveal visible';
+  div.innerHTML=`<div style="font-size:34px;">${d.icon}</div><h3>${d.t}</h3><p style="color:#e9d5ff;font-size:14.5px;">${d.d}</p><ul>${d.pts.map(p=>`<li>${p}</li>`).join('')}</ul><span class="kpi">${d.kpi}</span><div class="agent-box">${d.agent}</div><div style="margin-top:12px;"><a href="https://web.whatsapp.com/send?phone=919347620856&amp;text=Hi%20People%20Connect%2C%20I%27d%20like%20to%20discuss%20AI%20training%20for%20my%20team." target="_blank" rel="noopener noreferrer" class="btn btn-hot" style="padding:9px 18px;font-size:13.5px;">Train My Team →</a></div>`;
+  grid.appendChild(div);
+ });
+}
+document.getElementById('deptTabs').addEventListener('click',e=>{
+ if(e.target.classList.contains('tab')){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  e.target.classList.add('active');
+  renderDepts(e.target.dataset.f);
+ }
+});
+// scroll reveal
+const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting)en.target.classList.add('visible')}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+renderDepts();
+</script>
 </body>
 </html>
