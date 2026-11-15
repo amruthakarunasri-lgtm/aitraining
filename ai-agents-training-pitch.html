@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>People Connect — Practical AI Training for Teams</title>
+<style>
+:root{
+  --bg:#0a0118;
+  --pink:#ff2fb3; --orange:#ff7a18; --yellow:#ffcf02;
+  --violet:#7c3aed; --cyan:#00e5ff; --lime:#a3ff00;
+  --card:rgba(255,255,255,.08);
+  --muted:#c4b5fd;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Inter,Arial,sans-serif;background:var(--bg);color:#fff;overflow-x:hidden;line-height:1.6}
+a{text-decoration:none;color:inherit}
+.gradient-text{background:linear-gradient(90deg,var(--yellow),var(--orange),var(--pink),var(--violet),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent}
+.btn{display:inline-block;padding:14px 28px;border-radius:50px;font-weight:800;border:none;cursor:pointer;transition:.25s;font-size:16px}
+.btn-hot{background:linear-gradient(90deg,#ff2fb3,#ff7a18,#ffcf02);color:#1a0010;box-shadow:0 8px 32px rgba(255,47,179,.5)}
+.btn-hot:hover{transform:scale(1.05) translateY(-2px)}
+.btn-ghost{border:2px solid var(--cyan);color:var(--cyan);background:transparent}
+.btn-ghost:hover{background:var(--cyan);color:#001318}
+/* NAV */
+nav{position:sticky;top:0;z-index:20;display:flex;justify-content:space-between;align-items:center;padding:14px 32px;background:rgba(10,1,24,.85);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.12)}
+.logo{display:flex;align-items:center;gap:10px;font-size:26px;font-weight:900;letter-spacing:.5px}
+.logo .site-logo{height:44px;width:44px;object-fit:cover;border-radius:50%;border:2px solid var(--yellow);box-shadow:0 0 14px rgba(255,207,2,.65),0 4px 10px rgba(0,0,0,.55)}
+.logo .brand-3d{background:linear-gradient(180deg,#ffffff 5%,#ffe98a 30%,#ffcf02 42%,#ff7a18 58%,#ff2fb3 78%,#7c3aed 100%);background-size:100% 220%;-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 1px 0 #6b2400) drop-shadow(0 2px 0 #4d1a00) drop-shadow(0 3px 0 #331100) drop-shadow(0 5px 8px rgba(0,0,0,.65));animation:brandShine 4s ease-in-out infinite alternate}
+@keyframes brandShine{from{background-position:50% 0%}to{background-position:50% 100%}}
+.nav-links{display:flex;gap:22px;font-size:14.5px;color:#e9d5ff} .nav-links a:hover{color:var(--yellow)}
+/* HERO */
+.hero{position:relative;padding:80px 32px 60px;text-align:center;background:
+ radial-gradient(600px 400px at 15% 20%,rgba(255,47,179,.35),transparent),
+ radial-gradient(700px 500px at 85% 15%,rgba(0,229,255,.3),transparent),
+ radial-gradient(600px 500px at 50% 90%,rgba(124,58,237,.5),transparent),var(--bg)}
+.pill{display:inline-block;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);padding:8px 18px;border-radius:30px;font-size:13px;letter-spacing:.5px;margin-bottom:18px}
+.hero h1{font-size:clamp(36px,6vw,68px);line-height:1.05;font-weight:900;max-width:950px;margin:0 auto 16px}
+.hero p{max-width:720px;margin:0 auto 26px;color:#e9d5ff;font-size:18px}
+.hero-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:32px}
+.stats{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.stat{background:var(--card);border:1px solid rgba(255,255,255,.15);border-radius:16px;padding:16px 24px;min-width:170px}
+.stat b{font-size:28px;display:block} .stat small{color:var(--muted)}
+/* MARQUEE */
+.marquee{background:linear-gradient(90deg,var(--violet),var(--pink),var(--orange));padding:12px 0;overflow:hidden;white-space:nowrap;font-weight:800;letter-spacing:1px}
+.marquee span{margin:0 26px}
+/* SECTION */
+.section{max-width:1180px;margin:0 auto;padding:64px 28px}
+.section h2{font-size:clamp(28px,4vw,44px);text-align:center;margin-bottom:10px;font-weight:900}
+.sub{text-align:center;color:var(--muted);max-width:750px;margin:0 auto 32px;font-size:17px}
+/* DEPARTMENTS */
+
+.dept-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:18px}
+.dept-card{background:linear-gradient(180deg,rgba(255,255,255,.12),rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.15);border-radius:20px;padding:24px;position:relative;overflow:hidden;transition:.25s}
+.dept-card:hover{transform:translateY(-6px);border-color:var(--cyan)}
+.dept-card::before{content:'';position:absolute;top:0;left:0;right:0;height:5px}
+.dept-card.prod::before{background:linear-gradient(90deg,#ff7a18,#ffcf02)} .dept-card.supply::before{background:linear-gradient(90deg,#00e5ff,#7c3aed)}
+.dept-card.fin::before{background:linear-gradient(90deg,#a3ff00,#00e5ff)} .dept-card.mkt::before{background:linear-gradient(90deg,#ff2fb3,#7c3aed)}
+.dept-card.sales::before{background:linear-gradient(90deg,#ffcf02,#ff2fb3)} .dept-card.proc::before{background:linear-gradient(90deg,#7c3aed,#00e5ff)}
+.dept-card.hr::before{background:linear-gradient(90deg,#ff7a18,#ff2fb3)}
+.dept-card h3{font-size:20px;margin:8px 0} .dept-card ul{margin:10px 0 12px 18px;color:#e9d5ff;font-size:14.8px}
+.kpi{display:inline-block;background:rgba(163,255,0,.18);border:1px solid var(--lime);color:var(--lime);font-size:13px;font-weight:800;padding:4px 12px;border-radius:20px;margin:4px 6px 0 0}
+.agent-box{background:rgba(0,0,0,.35);border-radius:12px;padding:12px;font-size:13.8px;margin-top:10px;border-left:4px solid var(--cyan)}
+/* PROGRAM */
+.program-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
+.prog{background:#fff;color:#160431;border-radius:22px;padding:28px;position:relative}
+.prog.popular{background:linear-gradient(135deg,#ffcf02,#ff7a18,#ff2fb3);color:#1a0010;transform:scale(1.03);box-shadow:0 20px 60px rgba(255,47,179,.4)}
+.prog h3{font-size:22px;margin-bottom:6px} .prog ul{margin:14px 0 18px 18px;font-size:15px}
+
+/* PROCESS */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:10px}
+.step{background:var(--card);border:1px solid rgba(255,255,255,.15);border-radius:18px;padding:22px;text-align:center}
+.step .num{font-size:36px;font-weight:900}
+/* FAQ */
+.faq details{background:rgba(255,255,255,.07);border-radius:12px;padding:14px 18px;margin-bottom:10px;cursor:pointer}
+.faq summary{font-weight:800}
+ .contact{background:#fff;color:#1a0010;border-radius:24px;padding:32px;margin:20px auto 0;max-width:720px;text-align:center}
+ .contact .wa-link{display:inline-block;margin-top:12px;background:#128c45;color:#fff;font-size:18px;font-weight:800;padding:15px 24px;border-radius:50px}
+ .contact .wa-link:hover{background:#0e7439;transform:translateY(-2px)}
+footer{text-align:center;padding:28px;color:#a78bfa;font-size:14px}
+.float-wa{position:fixed;bottom:20px;right:20px;background:#25D366;color:#fff;width:58px;height:58px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;box-shadow:0 8px 24px rgba(0,0,0,.4);z-index:30}
+@media(max-width:860px){.nav-links{display:none}}
+
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo"><img class="site-logo" src="logo.png" alt="People Connect logo" onerror="this.remove()" /><span class="brand-3d">People Connect</span></div>
+  <div class="nav-links">
+    <a href="#departments">Use cases</a><a href="#programs">Training</a><a href="#approach">Approach</a><a href="#contact">Contact</a>
+  </div>
+  <a href="https://wa.me/919347620856?text=Hi%20People%20Connect%2C%20I%27d%20like%20to%20discuss%20an%20AI%20training%20demo%20for%20my%20team." target="_blank" rel="noopener noreferrer" class="btn btn-hot" style="padding:10px 20px;font-size:14px;">Book a Demo</a>
+</nav>
+
+<header class="hero">
+  <div class="pill">Practical AI training for business teams</div>
+  <h1>Help your team put <span class="gradient-text">AI to work</span></h1>
+  <p>Give your people practical experience applying AI to everyday workflows—from finance and operations to sales and HR. Start with a short conversation about your team's needs.</p>
+  <div class="hero-cta">
+    <a href="https://wa.me/919347620856?text=Hi%20People%20Connect%2C%20I%27d%20like%20to%20discuss%20an%20AI%20training%20demo%20for%20my%20team." target="_blank" rel="noopener noreferrer" class="btn btn-hot">Book a Demo on WhatsApp</a>
+    <a href="#departments" class="btn btn-ghost">Explore Team Use Cases</a>
+  </div>
+  <div class="stats">
+    <div class="stat"><b class="gradient-text">120+</b><small>Companies served</small></div>
+    <div class="stat"><b style="color:var(--lime)">15,000+</b><small>Employees trained</small></div>
+    <div class="stat"><b style="color:var(--yellow)">4.9/5</b><small>Client rating</small></div>
+  </div>
+</header>
+
+<div class="marquee">PRACTICAL AI TRAINING • PRODUCTION • SUPPLY CHAIN • FINANCE • MARKETING • SALES • PROCUREMENT • HR • ON-SITE AND LIVE ONLINE</div>
+
+<section class="section" id="departments">
+  <h2>Explore AI use cases for <span class="gradient-text">your organization</span></h2>
+  <p class="sub">See practical examples for common team workflows. Training is tailored to your priorities, tools, and approved data policies.</p>
+  <div class="dept-grid">
+    <article class="dept-card prod"><div style="font-size:34px;">🏭</div><h3>Production & Operations</h3><p style="color:#e9d5ff;font-size:14.5px;">Explore AI support for operational documentation, quality workflows, and maintenance information.</p><ul><li>Shift-log drafting and summaries</li><li>Quality inspection documentation</li><li>Maintenance information lookup</li></ul><span class="kpi">Workflow examples</span><div class="agent-box">Example: Organize a maintenance note or inspection observation for review by the responsible team.</div><div style="margin-top:12px;"><a href="https://wa.me/919347620856?text=Hi%20People%20Connect%2C%20I%27d%20like%20to%20discuss%20AI%20training%20for%20this%20use%20case." target="_blank" rel="noopener noreferrer" class="btn btn-hot" style="padding:9px 18px;font-size:13.5px;">Discuss This Use Case</a></div></article>
+    <article class="dept-card supply"><div style="font-size:34px;">🚚</div><h3>Supply Chain & Logistics</h3><p style="color:#e9d5ff;font-size:14.5px;">Explore ways AI can assist with planning, inventory information, and shipment communications.</p><ul><li>Inventory and demand summaries</li><li>Shipment status communication drafts</li><li>Supplier information review</li></ul><span class="kpi">Workflow examples</span><div class="agent-box">Example: Summarize inventory and lead-time information to support a planner’s review.</div><div style="margin-top:12px;"><a href="https://wa.me/919347620856?text=Hi%20People%20Connect%2C%20I%27d%20like%20to%20discuss%20AI%20training%20for%20this%20use%20case." target="_blank" rel="noopener noreferrer" class="btn btn-hot" style="padding:9px 18px;font-size:13.5px;">Discuss This Use Case</a></div></article>
+    <article class="dept-card fin"><div style="font-size:34px;">💰</div><h3>Finance & Accounts</h3><p style="color:#e9d5ff;font-size:14.5px;">Explore AI assistance for document review, reconciliation support, and reporting workflows.</p><ul><li>Invoice data extraction for review</li><li>Reconciliation support</li><li>Cash-flow and report summaries</li></ul><span class="kpi">Workflow examples</span><div class="agent-box">Example: Extract fields from an invoice for a person to verify before entry into an accounting system.</div><div style="margin-top:12px;"><a href="https://wa.me/919347620856?text=Hi%20People%20Connect%2C%20I%27d%20like%20to%20discuss%20AI%20training%20for%20this%20use%20case." target="_blank" rel="noopener noreferrer" class="btn btn-hot" style="padding:9px 18px;font-size:13.5px;">Discuss This Use Case</a></div></article>
+    <article class="dept-card mkt"><div style="font-size:34px;">📣</div><h3>Marketing</h3><p style="color:#e9d5ff;font-size:14.5px;">Explore AI support for content planning, customer feedback, and campaign workflows.</p><ul><li>Drafts aligned to brand guidance</li><li>Customer feedback summaries</li><li>Campaign content variations</li></ul><span class="kpi">Workflow examples</span><div class="agent-box">Example: Create a first draft of campaign copy for a marketer to review and refine.</div><div style="margin-top:12px;"><a href="https://wa.me/919347620856?text=Hi%20People%20Connect%2C%20I%27d%20like%20to%20discuss%20AI%20training%20for%20this%20use%20case." target="_blank" rel="noopener noreferrer" class="btn btn-hot" style="padding:9px 18px;font-size:13.5px;">Discuss This Use Case</a></div></article>
+    <article class="dept-card sales"><div style="font-size:34px;">🤝</div><h3>Sales</h3><p style="color:#e9d5ff;font-size:14.5px;">Explore AI assistance for customer responses, sales materials, and follow-up workflows.</p><ul><li>Draft responses and quotations</li><li>Lead and meeting summaries</li><li>Follow-up preparation</li></ul><span class="kpi">Workflow examples</span><div class="agent-box">Example: Prepare a draft response using approved product information for a sales representative to check.</div><div style="margin-top:12px;"><a href="https://wa.me/919347620856?text=Hi%20People%20Connect%2C%20I%27d%20like%20to%20discuss%20AI%20training%20for%20this%20use%20case." target="_blank" rel="noopener noreferrer" class="btn btn-hot" style="padding:9px 18px;font-size:13.5px;">Discuss This Use Case</a></div></article>
+    <article class="dept-card proc"><div style="font-size:34px;">🧾</div><h3>Procurement</h3><p style="color:#e9d5ff;font-size:14.5px;">Explore AI support for reviewing supplier documents and preparing procurement workflows.</p><ul><li>Supplier quote comparisons</li><li>Vendor information summaries</li><li>Purchase request drafts</li></ul><span class="kpi">Workflow examples</span><div class="agent-box">Example: Compare fields from supplier documents to help a buyer assess options.</div><div style="margin-top:12px;"><a href="https://wa.me/919347620856?text=Hi%20People%20Connect%2C%20I%27d%20like%20to%20discuss%20AI%20training%20for%20this%20use%20case." target="_blank" rel="noopener noreferrer" class="btn btn-hot" style="padding:9px 18px;font-size:13.5px;">Discuss This Use Case</a></div></article>
+    <article class="dept-card hr"><div style="font-size:34px;">👥</div><h3>Human Resources</h3><p style="color:#e9d5ff;font-size:14.5px;">Explore AI support for employee information, onboarding materials, and HR communications.</p><ul><li>HR policy information assistant</li><li>Onboarding content drafts</li><li>Interview and training coordination</li></ul><span class="kpi">Workflow examples</span><div class="agent-box">Example: Find a relevant answer from approved HR guidance for review before sharing.</div><div style="margin-top:12px;"><a href="https://wa.me/919347620856?text=Hi%20People%20Connect%2C%20I%27d%20like%20to%20discuss%20AI%20training%20for%20this%20use%20case." target="_blank" rel="noopener noreferrer" class="btn btn-hot" style="padding:9px 18px;font-size:13.5px;">Discuss This Use Case</a></div></article>
+  </div>
+</section>
+
+<section class="section" id="programs">
+  <h2>Training that fits <span class="gradient-text">your team</span></h2>
+  <p class="sub">From a focused introduction to broader team enablement, discuss a training format suited to your needs. On-site and live-online options are available.</p>
+  <div class="program-grid">
+    <div class="prog">
+      <h3>AI Introduction</h3><p>For leaders and managers</p>
+      <ul><li>Understand practical AI capabilities and limitations</li><li>See relevant business workflow examples</li><li>Discuss responsible use and data considerations</li></ul>
+      <a href="https://wa.me/919347620856?text=Hi%20People%20Connect%2C%20I%27d%20like%20to%20discuss%20an%20AI%20training%20demo%20for%20my%20team." target="_blank" rel="noopener noreferrer" class="btn btn-hot" style="width:100%;text-align:center">Discuss a Demo</a>
+    </div>
+    <div class="prog popular">
+      <h3>Role-Based Team Training</h3><p>For teams and departments</p>
+      <ul><li>Explore AI use cases relevant to your work</li><li>Practice with guided, hands-on activities</li><li>Identify appropriate next steps for your team</li></ul>
+      <a href="https://wa.me/919347620856?text=Hi%20People%20Connect%2C%20I%27d%20like%20to%20discuss%20AI%20training%20for%20my%20team." target="_blank" rel="noopener noreferrer" class="btn" style="background:#000;color:#fff;width:100%;text-align:center">Discuss Your Team</a>
+    </div>
+    <div class="prog">
+      <h3>Enterprise Enablement</h3><p>For broader adoption</p>
+      <ul><li>Align training to your workflows and priorities</li><li>Discuss governance and adoption needs</li><li>Plan a suitable learning path with your team</li></ul>
+      <a href="https://wa.me/919347620856?text=Hi%20People%20Connect%2C%20I%27d%20like%20to%20discuss%20enterprise%20AI%20training." target="_blank" rel="noopener noreferrer" class="btn btn-ghost" style="border-color:#160431;color:#160431;width:100%;text-align:center">Talk to Us</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="approach">
+  <h2>A clear, practical <span class="gradient-text">way to get started</span></h2>
+  <div class="steps">
+    <div class="step"><div class="num">1</div><h3>Share your priorities</h3><p style="color:var(--muted)">Tell us about your team, workflows, and what you want to improve.</p></div>
+    <div class="step"><div class="num">2</div><h3>See relevant examples</h3><p style="color:var(--muted)">Explore practical AI use cases connected to your team's work.</p></div>
+    <div class="step"><div class="num">3</div><h3>Discuss a training plan</h3><p style="color:var(--muted)">We'll talk through audience, format, and suitable next steps.</p></div>
+  </div>
+</section>
+
+<section class="section faq">
+  <h2>Good to know</h2>
+  <p class="sub">A few common questions before we talk.</p>
+  <details open><summary>Does this require coding?</summary><p style="color:var(--muted)">The training focuses on practical, accessible AI workflows. We can discuss your team's experience and goals before recommending an approach.</p></details>
+  <details><summary>How do you handle company data?</summary><p style="color:var(--muted)">We discuss your data policies and approved tools before any hands-on work. Avoid sharing confidential or personal data in public AI tools.</p></details>
+  <details><summary>Will AI replace our team?</summary><p style="color:var(--muted)">AI is a tool that can assist with selected tasks. Outcomes depend on the workflow, tools, and how your organization chooses to use it.</p></details>
+  <details><summary>What tools do you cover?</summary><p style="color:var(--muted)">Training can cover commonly used AI assistants and workflow tools, based on your team's needs and approved technology.</p></details>
+</section>
+
+<section class="section" id="contact">
+  <h2>Let's explore what's useful for <span class="gradient-text">your team</span></h2>
+  <p class="sub">Skip the form. Message us directly on WhatsApp to discuss a demo, your team's needs, and possible next steps.</p>
+  <div class="contact" id="whatsappContact">
+    <h3>Start a conversation with People Connect</h3>
+    <p>Send a quick message—no form or booking account needed.</p>
+    <a class="wa-link" href="https://wa.me/919347620856?text=Hi%20People%20Connect%2C%20I%27d%20like%20to%20discuss%20an%20AI%20training%20demo%20for%20my%20team." target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a>
+    <p style="margin-top:16px;">Or email <a href="mailto:peopleconnect2004@gmail.com" style="color:#6d28d9;font-weight:700;">peopleconnect2004@gmail.com</a></p>
+  </div>
+</section>
+
+<footer>© 2026 People Connect • Kochi • Bengaluru • Dubai • Made to make India AI-first 🇮🇳</footer>
+<a class="float-wa" href="https://wa.me/919347620856?text=Hi%20People%20Connect%2C%20I%27d%20like%20to%20discuss%20an%20AI%20training%20demo%20for%20my%20team." target="_blank" rel="noopener noreferrer" title="Chat with us on WhatsApp">💬</a>
+
+
+</body>
+</html>
